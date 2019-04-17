@@ -1,0 +1,80 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "extends": [
+    "airbnb"
+  ],
+  "env": {
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ]
+      }
+    }
+  },
+  "rules": {
+    "eqeqeq": [
+      "error",
+      "smart"
+    ],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [
+          ".js"
+        ]
+      }
+    ],
+    "default-case": "off",
+    "camelcase": [
+      2,
+      {
+        "properties": "always"
+      }
+    ],
+    "react/jsx-pascal-case": [
+      2,
+      {
+        "allowAllCaps": true
+      }
+    ],
+    "no-dupe-keys": "error",
+    "import/prefer-default-export": "off",
+    "no-plusplus": "off",
+    "react/forbid-prop-types": "off",
+    "react/require-default-props": "off",
+    "react/no-unused-prop-types": "off",
+    "react/default-props-match-prop-types": "off",
+    "react/no-unused-state": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-case-declarations": "off",
+    "import/no-extraneous-dependencies": "off",
+    "linebreak-style": "off",
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ]
+  }
+}
