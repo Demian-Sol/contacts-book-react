@@ -1,28 +1,57 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import {
+  setContactsData as setContacts,
+  setErrorInfo as setError,
+} from './store';
+import { CONTACTS_LS_LABEL, DATA_SOURCE_URL } from './constants';
 import './App.css';
 
+const propTypes = {
+  setContactsData: PropTypes.func,
+  setErrorInfo: PropTypes.func,
+};
+const defaultProps = {
+  setContactsData: () => null,
+  setErrorInfo: () => null,
+};
+
 class App extends Component {
+  componentDidMount() {
+    const { setContactsData, setErrorInfo } = this.props;
+    const storedContacts = window.localStorage.getItem(CONTACTS_LS_LABEL);
+    if (!storedContacts) {
+      axios.get(DATA_SOURCE_URL)
+        .then(response => {
+          window.localStorage.setItem(CONTACTS_LS_LABEL, JSON.stringify(response.data));
+          setContactsData(response.data);
+        })
+        .catch(error => setErrorInfo(error));
+    } else {
+      setContactsData(JSON.parse(storedContacts));
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = propTypes;
+App.defaultProps = defaultProps;
+
+const mapStateToProps = state => {
+
+};
+const mapDispatchToProps = {
+  setContactsData: setContacts,
+  setErrorInfo: setError,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
