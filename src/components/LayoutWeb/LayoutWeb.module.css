@@ -1,0 +1,13 @@
+.LayoutWeb {
+  display: flex;
+  justify-content: center;
+}
+
+.ListArea {
+  background-color: antiquewhite;
+}
+
+.ContactArea {
+  background-color: azure;
+  width: 200px;
+}
