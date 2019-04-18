@@ -8,7 +8,7 @@ import {
   selectListDataAll,
 } from './store';
 import { CONTACTS_LS_LABEL, DATA_SOURCE_URL } from './constants';
-import CompleteContactsList from './components/CompleteContactsList';
+import LayoutWeb from './components/LayoutWeb';
 import './App.css';
 
 const propTypes = {
@@ -42,11 +42,9 @@ class App extends Component {
   render() {
     const { listDataAll } = this.props;
     return (
-      <div className="App">
-        <CompleteContactsList
-          listDataAll={listDataAll}
-        />
-      </div>
+      <LayoutWeb
+        listDataAll={listDataAll}
+      />
     );
   }
 }
