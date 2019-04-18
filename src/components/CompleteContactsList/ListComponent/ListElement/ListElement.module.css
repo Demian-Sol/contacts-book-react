@@ -1,0 +1,13 @@
+.ListElement {
+  background-color: #eeeeee;
+}
+
+.ListElement:hover {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.SecondaryInfo {
+  font-size: 0.9em;
+  color: #999999;
+}
