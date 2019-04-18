@@ -3,6 +3,7 @@ import * as types from './types';
 const initialState = {
   contacts: [],
   error: '',
+  searchField: '',
 };
 
 const appReducer = (state = initialState, action) => {
