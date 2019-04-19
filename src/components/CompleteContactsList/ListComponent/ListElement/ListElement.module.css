@@ -1,5 +1,10 @@
 .ListElement {
   background-color: #eeeeee;
+  padding: 0 40px;
+}
+
+.PrimaryInfo {
+  margin-bottom: 0;
 }
 
 .ListElement:hover {
@@ -10,4 +15,5 @@
 .SecondaryInfo {
   font-size: 0.9em;
   color: #999999;
+  margin: 0;
 }
