@@ -15,11 +15,10 @@ const defaultProps = {
 
 const ListElement = ({ listElement: { name, username, favorite } }) => (
   <div className={styles.ListElement}>
-    <p>{name}</p>
+    <p className={styles.PrimaryInfo}>{name}</p>
     <p className={styles.SecondaryInfo}>
       <em>
-        aka
-        {' '}
+        {'aka '}
         {username}
       </em>
     </p>
