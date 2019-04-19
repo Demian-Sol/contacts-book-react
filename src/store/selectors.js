@@ -21,3 +21,8 @@ export const selectListDataAll = state => {
 };
 
 export const selectSearchValue = state => state.searchField;
+
+export const selectDisplayedContact = state => {
+  if (state.displayedContactId === '' || state.contacts.length === 0) return null;
+  return state.contacts.find(el => el.id === +state.displayedContactId);
+};
