@@ -1,2 +1,4 @@
 export const SET_CONTACTS_DATA = 'SET_CONTACTS_DATA';
 export const SET_ERROR_INFO = 'SET_ERROR_INFO';
+
+export const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';

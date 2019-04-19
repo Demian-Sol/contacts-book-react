@@ -2,18 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './LayoutWeb.module.css';
 import CompleteContactsList from '../CompleteContactsList';
-
+import SearchForm from '../SearchForm';
 
 const propTypes = {
   listDataAll: PropTypes.array,
+  searchValue: PropTypes.string,
+  setSearchValue: PropTypes.func,
 };
 const defaultProps = {
   listDataAll: [],
-}
+  searchValue: '',
+  setSearchValue: () => null,
+};
 
-const LayoutWeb = ({ listDataAll }) => (
+const LayoutWeb = ({ listDataAll, setSearchValue, searchValue }) => (
   <div className={styles.LayoutWeb}>
     <div className={styles.ListArea}>
+      <SearchForm
+        setSearchValue={setSearchValue}
+        searchValue={searchValue}
+      />
       <CompleteContactsList
         listDataAll={listDataAll}
       />
