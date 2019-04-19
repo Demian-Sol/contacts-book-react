@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './LayoutWeb.module.css';
 import CompleteContactsList from '../CompleteContactsList';
 import SearchForm from '../SearchForm';
+import ContactForm from '../ContactForm';
 
 const propTypes = {
   listDataAll: PropTypes.array,
@@ -15,7 +16,9 @@ const defaultProps = {
   setSearchValue: () => null,
 };
 
-const LayoutWeb = ({ listDataAll, setSearchValue, searchValue }) => (
+const LayoutWeb = ({
+  listDataAll, setSearchValue, searchValue, displayedContact, updateContact
+}) => (
   <div className={styles.LayoutWeb}>
     <div className={styles.ListArea}>
       <SearchForm
@@ -27,7 +30,13 @@ const LayoutWeb = ({ listDataAll, setSearchValue, searchValue }) => (
       />
     </div>
     <div className={styles.ContactArea}>
-      
+      {displayedContact !== null
+      && (
+        <ContactForm
+          displayedContact={displayedContact}
+          updateContact={updateContact}
+        />
+      )}
     </div>
   </div>
 );

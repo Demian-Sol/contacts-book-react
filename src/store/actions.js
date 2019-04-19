@@ -20,3 +20,17 @@ export const setSearchValue = searchValue => (
     searchValue,
   }
 );
+
+export const setContactId = id => (
+  {
+    type: types.SET_CONTACT_ID,
+    id,
+  }
+);
+
+export const updateContact = contact => (
+  {
+    type: types.UPDATE_CONTACT,
+    contact,
+  }
+);
