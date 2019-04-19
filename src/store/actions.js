@@ -13,3 +13,10 @@ export const setErrorInfo = error => (
     error,
   }
 );
+
+export const setSearchValue = searchValue => (
+  {
+    type: types.SET_SEARCH_VALUE,
+    searchValue,
+  }
+);

@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import {
   setContactsData as setContacts,
   setErrorInfo as setError,
+  setSearchValue as setSearch,
   selectListDataAll,
+  selectSearchValue,
 } from './store';
 import { CONTACTS_LS_LABEL, DATA_SOURCE_URL } from './constants';
 import LayoutWeb from './components/LayoutWeb';
@@ -14,12 +16,16 @@ import './App.css';
 const propTypes = {
   setContactsData: PropTypes.func,
   setErrorInfo: PropTypes.func,
+  setSearchValue: PropTypes.func,
   listDataAll: PropTypes.array,
+  searchValue: PropTypes.string,
 };
 const defaultProps = {
   setContactsData: () => null,
   setErrorInfo: () => null,
+  setSearchValue: () => null,
   listDataAll: [],
+  searchValue: '',
 };
 
 class App extends Component {
@@ -40,10 +46,12 @@ class App extends Component {
   }
 
   render() {
-    const { listDataAll } = this.props;
+    const { listDataAll, searchValue, setSearchValue } = this.props;
     return (
       <LayoutWeb
         listDataAll={listDataAll}
+        setSearchValue={setSearchValue}
+        searchValue={searchValue}
       />
     );
   }
@@ -55,11 +63,13 @@ App.defaultProps = defaultProps;
 const mapStateToProps = state => (
   {
     listDataAll: selectListDataAll(state),
+    searchValue: selectSearchValue(state),
   }
 );
 const mapDispatchToProps = {
   setContactsData: setContacts,
   setErrorInfo: setError,
+  setSearchValue: setSearch,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -19,6 +19,11 @@ const appReducer = (state = initialState, action) => {
         ...state,
         error: action.error,
       };
+    case types.SET_SEARCH_VALUE:
+      return {
+        ...state,
+        searchField: action.searchValue,
+      };
     default:
       return state;
   }
