@@ -7,7 +7,7 @@ const propTypes = {
   listData: PropTypes.array.isRequired,
 };
 
-const ListComponent = ({ listData }) => (
+const ListComponent = ({ listData, setContactId }) => (
   listData.map((listElement, index, arr) => {
     if (index === 0 || listElement.name.charAt(0) !== arr[index - 1].name.charAt(0)) {
       return (
@@ -17,6 +17,7 @@ const ListComponent = ({ listData }) => (
           />
           <ListElement
             listElement={listElement}
+            setContactId={setContactId}
           />
         </Fragment>
       );
@@ -25,6 +26,7 @@ const ListComponent = ({ listData }) => (
       <ListElement
         key={listElement.id}
         listElement={listElement}
+        setContactId={setContactId}
       />
     );
   })
@@ -33,3 +35,20 @@ const ListComponent = ({ listData }) => (
 ListComponent.propTypes = propTypes;
 
 export default ListComponent;
+
+// const ListComponent = ({ listData, handleContactClick, setContactId }) => {
+//   return listData.map((listElement, index, arr) => (
+//     <Fragment key={listElement.id}>
+//       { (index === 0 || listElement.name.charAt(0) !== arr[index - 1].name.charAt(0))
+//       && (
+//         <GroupingElement
+//           letter={listElement.name.charAt(0)}
+//         />
+//       )}
+//       <ListElement
+//         listElement={listElement}
+//         setContactId={setContactId}
+//       />
+//     </Fragment>
+//   ));
+// };

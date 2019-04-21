@@ -1,12 +1,15 @@
-.LayoutWeb {
+.layoutWeb {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
-.ListArea {
+.listArea {
+  flex-grow: 1;
 }
 
-.ContactArea {
+.contactArea {
   background-color: azure;
-  width: 200px;
+  flex-grow: 9;
+  /* min-width: 200px; */
+  position: relative;
 }

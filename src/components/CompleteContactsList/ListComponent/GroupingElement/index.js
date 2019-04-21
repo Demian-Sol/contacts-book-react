@@ -10,8 +10,8 @@ const defaultProps = {
 };
 
 const GroupingElement = ({ letter }) => (
-  <div className={styles.GroupingElement}>
-    {letter}
+  <div className={styles.groupingElement}>
+    <span className={styles.letter}>{letter}</span>
     <hr />
   </div>
 );

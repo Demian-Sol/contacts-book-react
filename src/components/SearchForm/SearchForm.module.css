@@ -1,6 +1,7 @@
-.SearchForm {
+.searchForm {
   margin-top: 20px;
-  width: 95%;
+  margin-left: 20px;
+  width: 90%;
   height: 30px;
   text-align: center;
 }

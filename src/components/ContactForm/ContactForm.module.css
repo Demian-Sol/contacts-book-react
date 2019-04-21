@@ -1,0 +1,37 @@
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 50px 0;
+  position: fixed;
+  width: 90%;
+  max-width: 450px;
+
+}
+
+.formField {
+  margin: 20px;
+  max-width: 450px;
+  width: 90%;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .contactForm {
+    max-width: 700px;
+  }
+  .formField {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1281px) {
+  .contactForm {
+    width: 80%;
+    max-width: none;
+  }
+  .formField {
+    width: 80%;
+    max-width: none;
+  }
+}

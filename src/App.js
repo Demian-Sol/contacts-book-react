@@ -6,12 +6,14 @@ import {
   setContactsData as setContacts,
   setErrorInfo as setError,
   setSearchValue as setSearch,
+  setContactId as setContact,
+  updateContact as updateC,
   selectListDataAll,
   selectSearchValue,
+  selectDisplayedContact,
 } from './store';
 import { CONTACTS_LS_LABEL, DATA_SOURCE_URL } from './constants';
 import LayoutWeb from './components/LayoutWeb';
-import './App.css';
 
 const propTypes = {
   setContactsData: PropTypes.func,
@@ -19,6 +21,7 @@ const propTypes = {
   setSearchValue: PropTypes.func,
   listDataAll: PropTypes.array,
   searchValue: PropTypes.string,
+  displayedContact: PropTypes.object,
 };
 const defaultProps = {
   setContactsData: () => null,
@@ -46,12 +49,17 @@ class App extends Component {
   }
 
   render() {
-    const { listDataAll, searchValue, setSearchValue } = this.props;
+    const {
+      listDataAll, searchValue, setSearchValue, displayedContact, updateContact, setContactId,
+    } = this.props;
     return (
       <LayoutWeb
         listDataAll={listDataAll}
         setSearchValue={setSearchValue}
         searchValue={searchValue}
+        displayedContact={displayedContact}
+        updateContact={updateContact}
+        setContactId={setContactId}
       />
     );
   }
@@ -64,12 +72,15 @@ const mapStateToProps = state => (
   {
     listDataAll: selectListDataAll(state),
     searchValue: selectSearchValue(state),
+    displayedContact: selectDisplayedContact(state),
   }
 );
 const mapDispatchToProps = {
   setContactsData: setContacts,
   setErrorInfo: setError,
   setSearchValue: setSearch,
+  setContactId: setContact,
+  updateContact: updateC,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
