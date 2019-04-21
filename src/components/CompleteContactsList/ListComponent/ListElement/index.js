@@ -22,9 +22,9 @@ class ListElement extends React.Component {
   render() {
     const { listElement: { name, username, favorite } } = this.props;
     return (
-      <div className={styles.ListElement} onClick={this.handleClick}>
-        <p className={styles.PrimaryInfo}>{name}</p>
-        <p className={styles.SecondaryInfo}>
+      <div className={styles.listElement} onClick={this.handleClick}>
+        <p className={styles.primaryInfo}>{name}</p>
+        <p className={styles.secondaryInfo}>
           <em>
             {'aka '}
             {username}

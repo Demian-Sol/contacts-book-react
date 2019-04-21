@@ -1,18 +1,18 @@
-.ListElement {
+.listElement {
   background-color: #eeeeee;
   padding: 0 40px;
 }
 
-.PrimaryInfo {
+.primaryInfo {
   margin-bottom: 0;
 }
 
-.ListElement:hover {
+.listElement:hover {
   background-color: #ffffff;
   cursor: pointer;
 }
 
-.SecondaryInfo {
+.secondaryInfo {
   font-size: 0.9em;
   color: #999999;
   margin: 0;
