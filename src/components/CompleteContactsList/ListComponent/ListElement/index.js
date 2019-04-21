@@ -13,17 +13,27 @@ const defaultProps = {
   favorite: false,
 };
 
-const ListElement = ({ listElement: { name, username, favorite } }) => (
-  <div className={styles.ListElement}>
-    <p className={styles.PrimaryInfo}>{name}</p>
-    <p className={styles.SecondaryInfo}>
-      <em>
-        {'aka '}
-        {username}
-      </em>
-    </p>
-  </div>
-);
+class ListElement extends React.Component {
+  handleClick = () => {
+    const { listElement: { id }, setContactId } = this.props;
+    setContactId(id);
+  }
+
+  render() {
+    const { listElement: { name, username, favorite } } = this.props;
+    return (
+      <div className={styles.ListElement} onClick={this.handleClick}>
+        <p className={styles.PrimaryInfo}>{name}</p>
+        <p className={styles.SecondaryInfo}>
+          <em>
+            {'aka '}
+            {username}
+          </em>
+        </p>
+      </div>
+    )
+  };
+}
 
 ListElement.propTypes = propTypes;
 ListElement.defaultProps = defaultProps;

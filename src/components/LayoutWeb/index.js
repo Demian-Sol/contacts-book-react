@@ -17,7 +17,7 @@ const defaultProps = {
 };
 
 const LayoutWeb = ({
-  listDataAll, setSearchValue, searchValue, displayedContact, updateContact
+  listDataAll, setSearchValue, searchValue, displayedContact, updateContact, setContactId,
 }) => (
   <div className={styles.LayoutWeb}>
     <div className={styles.ListArea}>
@@ -27,6 +27,7 @@ const LayoutWeb = ({
       />
       <CompleteContactsList
         listDataAll={listDataAll}
+        setContactId={setContactId}
       />
     </div>
     <div className={styles.ContactArea}>

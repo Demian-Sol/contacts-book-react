@@ -50,7 +50,7 @@ class App extends Component {
 
   render() {
     const {
-      listDataAll, searchValue, setSearchValue, displayedContact, updateContact,
+      listDataAll, searchValue, setSearchValue, displayedContact, updateContact, setContactId,
     } = this.props;
     return (
       <LayoutWeb
@@ -59,6 +59,7 @@ class App extends Component {
         searchValue={searchValue}
         displayedContact={displayedContact}
         updateContact={updateContact}
+        setContactId={setContactId}
       />
     );
   }

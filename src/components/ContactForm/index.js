@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import update, { set } from 'immutability-helper';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 import styles from './ContactForm.module.css';
 
 const propTypes = {
@@ -12,24 +15,19 @@ const defaultProps = {
 
 class ContactForm extends Component {
   state = {
-    contactData: {
-      avatar: '',
-      name: '',
-      username: '',
-      email: '',
-      phone: '',
-      website: '',
-      company: {},
-    },
+    contactData: this.props.displayedContact,
     isDirty: false,
   };
 
-  componentDidMount() {
+  componentDidUpdate(prevProps) {
     const { displayedContact } = this.props;
-    this.setState({ contactData: displayedContact });
+    if (prevProps.displayedContact.id !== displayedContact.id) {
+      this.setState({ contactData: displayedContact, isDirty: false });
+    }
   }
 
   handleChange = event => {
+    console.log(event.target);
     const { value, name } = event.target;
     if (name === 'company') {
       const newState = update(this.state, {
@@ -60,16 +58,65 @@ class ContactForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className={styles.ContactForm}>
         <img src={avatar} alt="avatar" />
-        <input onChange={this.handleChange} type="text" value={name} name="name" />
-        <input onChange={this.handleChange} type="url" value={avatar} name="avatar" />
-        <input onChange={this.handleChange} type="text" value={username} name="username" />
-        <input onChange={this.handleChange} type="email" value={email} name="email" />
-        <input onChange={this.handleChange} type="text" value={phone} name="phone" />
-        <input onChange={this.handleChange} type="text" value={website} name="website" />
-        <input onChange={this.handleChange} type="text" value={company.name} name="company" />
-        <button type="submit" disabled={!isDirty}>
-          Change
-        </button>
+        <TextField
+          onChange={this.handleChange}
+          margin="normal"
+          value={name}
+          label="name"
+          name="name"
+          className={styles.formField}
+        />
+        <TextField
+          onChange={this.handleChange}
+          margin="normal"
+          value={avatar}
+          label="avatar"
+          name="avatar"
+          className={styles.formField}
+        />
+        <TextField
+          onChange={this.handleChange}
+          margin="normal"
+          value={username}
+          label="username"
+          name="username"
+          className={styles.formField}
+        />
+        <TextField
+          onChange={this.handleChange}
+          margin="normal"
+          value={email}
+          label="email"
+          name="email"
+          className={styles.formField}
+        />
+        <TextField
+          onChange={this.handleChange}
+          margin="normal"
+          value={phone}
+          label="phone"
+          name="phone"
+          className={styles.formField}
+        />
+        <TextField
+          onChange={this.handleChange}
+          margin="normal"
+          value={website}
+          label="website"
+          name="website"
+          className={styles.formField}
+        />
+        <TextField
+          onChange={this.handleChange}
+          margin="normal"
+          value={company.name}
+          label="company"
+          name="company"
+          className={styles.formField}
+        />
+        <Button type="submit" disabled={!isDirty}>
+          { 'Change' }
+        </Button>
       </form>
     );
   }
