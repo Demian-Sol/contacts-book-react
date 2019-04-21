@@ -1,13 +1,13 @@
-.LayoutWeb {
+.layoutWeb {
   display: flex;
   /* justify-content: center; */
 }
 
-.ListArea {
+.listArea {
   flex-grow: 1;
 }
 
-.ContactArea {
+.contactArea {
   background-color: azure;
   flex-grow: 9;
   /* min-width: 200px; */

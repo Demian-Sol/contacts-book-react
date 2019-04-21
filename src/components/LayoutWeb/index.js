@@ -19,8 +19,8 @@ const defaultProps = {
 const LayoutWeb = ({
   listDataAll, setSearchValue, searchValue, displayedContact, updateContact, setContactId,
 }) => (
-  <div className={styles.LayoutWeb}>
-    <div className={styles.ListArea}>
+  <div className={styles.layoutWeb}>
+    <div className={styles.listArea}>
       <SearchForm
         setSearchValue={setSearchValue}
         searchValue={searchValue}
@@ -30,7 +30,7 @@ const LayoutWeb = ({
         setContactId={setContactId}
       />
     </div>
-    <div className={styles.ContactArea}>
+    <div className={styles.contactArea}>
       {displayedContact !== null
       && (
         <ContactForm

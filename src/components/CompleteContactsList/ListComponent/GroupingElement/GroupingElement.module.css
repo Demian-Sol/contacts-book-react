@@ -1,4 +1,8 @@
-.GroupingElement {
+.groupingElement {
   color: #999999;
   margin-top: 40px;
+}
+
+.letter {
+  padding-left: 40px;
 }

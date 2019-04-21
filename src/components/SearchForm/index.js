@@ -22,7 +22,7 @@ class SearchForm extends Component {
     const { searchValue } = this.props;
     return (
       <input
-        className={styles.SearchForm}
+        className={styles.searchForm}
         type="text"
         placeholder="Contacts search"
         onChange={this.handleChange}

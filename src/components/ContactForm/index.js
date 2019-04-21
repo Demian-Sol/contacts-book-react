@@ -27,7 +27,6 @@ class ContactForm extends Component {
   }
 
   handleChange = event => {
-    console.log(event.target);
     const { value, name } = event.target;
     if (name === 'company') {
       const newState = update(this.state, {
@@ -56,7 +55,7 @@ class ContactForm extends Component {
       contactData: { avatar, name, username, email, phone, website, company }, isDirty,
     } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className={styles.ContactForm}>
+      <form onSubmit={this.handleSubmit} className={styles.contactForm}>
         <img src={avatar} alt="avatar" />
         <TextField
           onChange={this.handleChange}
