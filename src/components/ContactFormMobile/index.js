@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import update, { set } from 'immutability-helper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
-import styles from './ContactForm.module.css';
+import styles from './ContactFormMobile.module.css';
 
 const propTypes = {
   displayedContact: PropTypes.object.isRequired,
   onClose: PropTypes.func,
+  updateContact: PropTypes.func,
 };
 const defaultProps = {
-
+  updateContact: () => null,
 };
 
 class ContactForm extends Component {
@@ -58,6 +58,11 @@ class ContactForm extends Component {
     const { onClose } = this.props;
     return (
       <form onSubmit={this.handleSubmit} className={styles.contactForm}>
+        {onClose && (
+          <button type="button" onClick={onClose} className={styles.crossButton}>
+            {'X'}
+          </button>
+        )}
         <img src={avatar} alt="avatar" />
         <TextField
           onChange={this.handleChange}
@@ -119,11 +124,10 @@ class ContactForm extends Component {
           <Button type="submit" disabled={!isDirty}>
             { 'Change' }
           </Button>
-          { onClose
-          && (
-          <Button type="button" onClick={onClose}>
-            { 'Close' }
-          </Button>
+          {onClose && (
+            <Button type="button" onClick={onClose}>
+              { 'Close' }
+            </Button>
           )}
         </div>
       </form>
