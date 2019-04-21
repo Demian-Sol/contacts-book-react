@@ -5,7 +5,7 @@ const initialState = {
   contacts: [],
   error: '',
   searchField: '',
-  displayedContactId: '1',
+  displayedContactId: '',
 };
 
 const appReducer = (state = initialState, action) => {

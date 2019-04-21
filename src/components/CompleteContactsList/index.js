@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ListComponent from './ListComponent';
 
@@ -9,13 +9,19 @@ const defaultProps = {
   listDataAll: [],
 };
 
-const CompleteContactsList = ({ listDataAll }) => (
-  <>
-    <ListComponent
-      listData={listDataAll}
-    />
-  </>
-);
+class CompleteContactsList extends Component {
+  render() {
+    const { listDataAll, setContactId } = this.props;
+    return (
+      <>
+        <ListComponent
+          listData={listDataAll}
+          setContactId={setContactId}
+        />
+      </>
+    );
+  }
+}
 
 CompleteContactsList.propTypes = propTypes;
 CompleteContactsList.defaultProps = defaultProps;
