@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -14,6 +14,7 @@ import {
 } from './store';
 import { CONTACTS_LS_LABEL, DATA_SOURCE_URL } from './constants';
 import LayoutWeb from './components/LayoutWeb';
+import LayoutMobile from './components/LayoutMobile';
 
 const propTypes = {
   setContactsData: PropTypes.func,
@@ -32,6 +33,10 @@ const defaultProps = {
 };
 
 class App extends Component {
+  state = {
+    currentWindowWidth: window.innerWidth,
+  }
+
   componentDidMount() {
     const { setContactsData, setErrorInfo } = this.props;
     // this logic would go into saga in a bigger project
@@ -46,21 +51,47 @@ class App extends Component {
     } else {
       setContactsData(JSON.parse(storedContacts));
     }
+
+    window.addEventListener('resize', this.updateCurrentWidth);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateCurrentWidth);
+  }
+
+  updateCurrentWidth = () => {
+    this.setState({ currentWindowWidth: window.innerWidth });
   }
 
   render() {
     const {
       listDataAll, searchValue, setSearchValue, displayedContact, updateContact, setContactId,
     } = this.props;
+    const { currentWindowWidth } = this.state;
     return (
-      <LayoutWeb
-        listDataAll={listDataAll}
-        setSearchValue={setSearchValue}
-        searchValue={searchValue}
-        displayedContact={displayedContact}
-        updateContact={updateContact}
-        setContactId={setContactId}
-      />
+      <Fragment>
+        {currentWindowWidth > 767
+          ? (
+            <LayoutWeb
+              listDataAll={listDataAll}
+              setSearchValue={setSearchValue}
+              searchValue={searchValue}
+              displayedContact={displayedContact}
+              updateContact={updateContact}
+              setContactId={setContactId}
+            />
+          ) : (
+            <LayoutMobile
+              listDataAll={listDataAll}
+              setSearchValue={setSearchValue}
+              searchValue={searchValue}
+              displayedContact={displayedContact}
+              updateContact={updateContact}
+              setContactId={setContactId}
+            />
+          )
+        }
+      </Fragment>
     );
   }
 }
