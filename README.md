@@ -7,7 +7,7 @@ Implemented features:
 - Changing contact data
 - Chrome, Opera, Safari, Firefox, IE 11 compatibility
 - Saving confirmed changes in local storage
-- Searching contacts,
+- Contacts search,
 - Alphabetical sorting and grouping contacts by first letter
 - Adaptive markup, working window width: 320px - 1280px+
 - Adding/removing contacts from 'favorite' category
