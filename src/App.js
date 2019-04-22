@@ -8,9 +8,12 @@ import {
   setSearchValue as setSearch,
   setContactId as setContact,
   updateContact as updateC,
+  toggleFavorite as toggle,
+
   selectListDataAll,
   selectSearchValue,
   selectDisplayedContact,
+  selectListDataFavorite,
 } from './store';
 import { CONTACTS_LS_LABEL, DATA_SOURCE_URL } from './constants';
 import LayoutWeb from './components/LayoutWeb';
@@ -20,7 +23,11 @@ const propTypes = {
   setContactsData: PropTypes.func,
   setErrorInfo: PropTypes.func,
   setSearchValue: PropTypes.func,
+  updateContact: PropTypes.func,
+  setContactId: PropTypes.func,
+  toggleFavorite: PropTypes.func,
   listDataAll: PropTypes.array,
+  listDataFavorite: PropTypes.array,
   searchValue: PropTypes.string,
   displayedContact: PropTypes.object,
 };
@@ -28,7 +35,11 @@ const defaultProps = {
   setContactsData: () => null,
   setErrorInfo: () => null,
   setSearchValue: () => null,
+  updateContact: () => null,
+  setContactId: () => null,
+  toggleFavorite: () => null,
   listDataAll: [],
+  listDataFavorite: [],
   searchValue: '',
 };
 
@@ -39,6 +50,7 @@ class App extends Component {
 
   componentDidMount() {
     const { setContactsData, setErrorInfo } = this.props;
+
     // this logic would go into saga in a bigger project
     const storedContacts = window.localStorage.getItem(CONTACTS_LS_LABEL);
     if (!storedContacts) {
@@ -51,7 +63,7 @@ class App extends Component {
     } else {
       setContactsData(JSON.parse(storedContacts));
     }
-
+    // for correct switching between layouts
     window.addEventListener('resize', this.updateCurrentWidth);
   }
 
@@ -65,29 +77,41 @@ class App extends Component {
 
   render() {
     const {
-      listDataAll, searchValue, setSearchValue, displayedContact, updateContact, setContactId,
+      listDataAll,
+      listDataFavorite,
+      searchValue,
+      setSearchValue,
+      displayedContact,
+      updateContact,
+      setContactId,
+      toggleFavorite,
     } = this.props;
     const { currentWindowWidth } = this.state;
+
     return (
       <Fragment>
         {currentWindowWidth > 767
           ? (
             <LayoutWeb
               listDataAll={listDataAll}
+              listDataFavorite={listDataFavorite}
               setSearchValue={setSearchValue}
               searchValue={searchValue}
               displayedContact={displayedContact}
               updateContact={updateContact}
               setContactId={setContactId}
+              toggleFavorite={toggleFavorite}
             />
           ) : (
             <LayoutMobile
               listDataAll={listDataAll}
+              listDataFavorite={listDataFavorite}
               setSearchValue={setSearchValue}
               searchValue={searchValue}
               displayedContact={displayedContact}
               updateContact={updateContact}
               setContactId={setContactId}
+              toggleFavorite={toggleFavorite}
             />
           )
         }
@@ -104,6 +128,7 @@ const mapStateToProps = state => (
     listDataAll: selectListDataAll(state),
     searchValue: selectSearchValue(state),
     displayedContact: selectDisplayedContact(state),
+    listDataFavorite: selectListDataFavorite(state),
   }
 );
 const mapDispatchToProps = {
@@ -112,6 +137,7 @@ const mapDispatchToProps = {
   setSearchValue: setSearch,
   setContactId: setContact,
   updateContact: updateC,
+  toggleFavorite: toggle,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

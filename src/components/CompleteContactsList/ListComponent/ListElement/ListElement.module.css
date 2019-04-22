@@ -1,19 +1,33 @@
-.listElement {
+.list-element {
   background-color: #eeeeee;
   padding: 0 40px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.primaryInfo {
+.primary-info {
   margin-bottom: 0;
+  margin-top: 8px;
 }
 
-.listElement:hover {
+.list-element:hover {
   background-color: #ffffff;
   cursor: pointer;
 }
 
-.secondaryInfo {
+.secondary-info {
   font-size: 0.9em;
   color: #999999;
   margin: 0;
+  margin-bottom: 8px;
+}
+
+.star-icon {
+  color: goldenrod;
+}
+
+.star-icon:hover {
+  font-size: 2em;
 }

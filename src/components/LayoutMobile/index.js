@@ -9,16 +9,20 @@ import ContactForm from '../ContactFormMobile';
 
 const propTypes = {
   listDataAll: PropTypes.array,
+  listDataFavorite: PropTypes.array,
   searchValue: PropTypes.string,
   setSearchValue: PropTypes.func,
+  toggleFavorite: PropTypes.func,
   setContactId: PropTypes.func,
   updateContact: PropTypes.func,
   displayedContact: PropTypes.object,
 };
 const defaultProps = {
   listDataAll: [],
+  listDataFavorite: [],
   searchValue: '',
   setSearchValue: () => null,
+  toggleFavorite: () => null,
   setContactId: () => null,
   updateContact: () => null,
 };
@@ -38,6 +42,7 @@ class LayoutMobile extends Component {
 
   handleIdPassing = id => {
     const { setContactId } = this.props;
+
     setContactId(id);
     this.handleOpen();
   }
@@ -45,12 +50,15 @@ class LayoutMobile extends Component {
   render() {
     const {
       listDataAll,
+      listDataFavorite,
       setSearchValue,
       searchValue,
       displayedContact,
       updateContact,
+      toggleFavorite,
     } = this.props;
     const { isModalOpen } = this.state;
+
     return (
       <div className={styles.layoutMobile}>
         <Modal
@@ -74,7 +82,9 @@ class LayoutMobile extends Component {
         />
         <CompleteContactsList
           listDataAll={listDataAll}
+          listDataFavorite={listDataFavorite}
           setContactId={this.handleIdPassing}
+          toggleFavorite={toggleFavorite}
         />
       </div>
     );

@@ -15,14 +15,16 @@ class SearchForm extends Component {
   handleChange = event => {
     const { setSearchValue } = this.props;
     const { value } = event.target;
+
     setSearchValue(value);
   };
 
   render() {
     const { searchValue } = this.props;
+
     return (
       <input
-        className={styles.searchForm}
+        className={styles['search-form']}
         type="text"
         placeholder="Contacts search"
         onChange={this.handleChange}
