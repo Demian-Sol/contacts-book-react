@@ -1,6 +1,6 @@
 Contact book app, based on create-react-app.
 
-Used technologies: react, redux, Material-UI.
+Used technologies: React, Redux, Material-UI.
 
 Implemented features:
 - Listing contacts
