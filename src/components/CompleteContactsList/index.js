@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import ListComponent from './ListComponent';
 import styles from './CompleteContactsList.module.css';
+import { TRANSLATIONS } from '../../constants';
 
 const propTypes = {
   listDataAll: PropTypes.array,
@@ -42,7 +43,7 @@ class CompleteContactsList extends Component {
           className={styles['toggle-button']}
         >
           <h4>
-            {'Contacts - Favorite'}
+            {TRANSLATIONS.LIST_BUTTON_FAVORITE}
           </h4>
         </Button>
         {isFavoriteListOpen && (
@@ -57,7 +58,7 @@ class CompleteContactsList extends Component {
           className={styles['toggle-button']}
         >
           <h4>
-            {'Contacts - All'}
+            {TRANSLATIONS.LIST_BUTTON_ALL}
           </h4>
         </Button>
         {isCompleteListOpen && (

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Star from '@material-ui/icons/Star';
 import StarBorder from '@material-ui/icons/StarBorderOutlined';
 import styles from './ListElement.module.css';
+import { TRANSLATIONS } from '../../../../constants';
 
 const propTypes = {
   listElement: PropTypes.object,
@@ -45,7 +46,7 @@ class ListElement extends React.Component {
           <p className={styles['primary-info']}>{name}</p>
           <p className={styles['secondary-info']}>
             <em>
-              {'aka '}
+              {TRANSLATIONS.LIST_USERNAME_PREFIX}
               {username}
             </em>
           </p>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './SearchForm.module.css';
+import { TRANSLATIONS } from '../../constants';
 
 const propTypes = {
   searchValue: PropTypes.string,
@@ -26,7 +27,7 @@ class SearchForm extends Component {
       <input
         className={styles['search-form']}
         type="text"
-        placeholder="Contacts search"
+        placeholder={TRANSLATIONS.SEARCH_FORM_PLACEHOLDER}
         onChange={this.handleChange}
         value={searchValue}
       />

@@ -4,6 +4,7 @@ import update from 'immutability-helper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import styles from './ContactFormMobile.module.css';
+import { TRANSLATIONS } from '../../constants';
 
 const propTypes = {
   displayedContact: PropTypes.object.isRequired,
@@ -36,7 +37,7 @@ class ContactForm extends Component {
   handleChange = event => {
     const { value, name } = event.target;
 
-    if (name === 'company') {
+    if (name === TRANSLATIONS.FORM_LABELS.COMPANY) {
       const newState = update(this.state, {
         contactData: { company: { name: { $set: value } } },
         isDirty: { $set: true },
@@ -64,6 +65,7 @@ class ContactForm extends Component {
       contactData: { avatar, name, username, email, phone, website, company }, isDirty,
     } = this.state;
     const { onClose } = this.props;
+    const { FORM_LABELS } = TRANSLATIONS;
 
     return (
       <form onSubmit={this.handleSubmit} className={styles['contact-form']}>
@@ -79,65 +81,65 @@ class ContactForm extends Component {
           onChange={this.handleChange}
           margin="normal"
           value={name}
-          label="name"
-          name="name"
+          label={FORM_LABELS.NAME}
+          name={FORM_LABELS.NAME}
           className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
           margin="normal"
           value={avatar}
-          label="avatar"
-          name="avatar"
+          label={FORM_LABELS.AVATAR}
+          name={FORM_LABELS.AVATAR}
           className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
           margin="normal"
           value={username}
-          label="username"
-          name="username"
+          label={FORM_LABELS.USERNAME}
+          name={FORM_LABELS.USERNAME}
           className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
           margin="normal"
           value={email}
-          label="email"
-          name="email"
+          label={FORM_LABELS.EMAIL}
+          name={FORM_LABELS.EMAIL}
           className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
           margin="normal"
           value={phone}
-          label="phone"
-          name="phone"
+          label={FORM_LABELS.PHONE}
+          name={FORM_LABELS.PHONE}
           className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
           margin="normal"
           value={website}
-          label="website"
-          name="website"
+          label={FORM_LABELS.WEBSITE}
+          name={FORM_LABELS.WEBSITE}
           className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
           margin="normal"
           value={company.name}
-          label="company"
-          name="company"
+          label={FORM_LABELS.COMPANY}
+          name={FORM_LABELS.COMPANY}
           className={styles['form-field']}
         />
         <div className={styles['buttons-bin']}>
           <Button type="submit" disabled={!isDirty}>
-            { 'Change' }
+            {TRANSLATIONS.FORM_BUTTON_CHANGE}
           </Button>
           {onClose && (
             <Button type="button" onClick={onClose}>
-              { 'Close' }
+              {TRANSLATIONS.FORM_BUTTON_CLOSE}
             </Button>
           )}
         </div>
