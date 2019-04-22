@@ -1,14 +1,17 @@
-.layoutWeb {
+.layout-web {
   display: flex;
-  /* justify-content: center; */
+  min-height: 100vh;
+  justify-content: flex-start;
 }
 
-.listArea {
+.list-area {
   flex-grow: 1;
+  max-width: 350px;
 }
 
-.contactArea {
+.contact-area {
   background-color: azure;
   flex-grow: 9;
   position: relative;
+  padding-left: 0;
 }

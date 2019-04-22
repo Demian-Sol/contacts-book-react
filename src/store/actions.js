@@ -34,3 +34,10 @@ export const updateContact = contact => (
     contact,
   }
 );
+
+export const toggleFavorite = toggleId => (
+  {
+    type: types.TOGGLE_FAVORITE,
+    toggleId,
+  }
+);

@@ -68,6 +68,7 @@
     "no-case-declarations": "off",
     "import/no-extraneous-dependencies": "off",
     "linebreak-style": "off",
+    "object-curly-newline": "off",
     "arrow-parens": [
       "error",
       "as-needed"
