@@ -60,7 +60,7 @@ class LayoutMobile extends Component {
     const { isModalOpen } = this.state;
 
     return (
-      <div className={styles.layoutMobile}>
+      <div className={styles['layout-mobile']}>
         <Modal
           open={isModalOpen}
           onClose={this.handleClose}
