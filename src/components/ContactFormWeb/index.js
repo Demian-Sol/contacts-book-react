@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import update, { set } from 'immutability-helper';
+import update from 'immutability-helper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -8,20 +8,27 @@ import styles from './ContactForm.module.css';
 
 const propTypes = {
   displayedContact: PropTypes.object.isRequired,
-  onClose: PropTypes.func,
+  onClose: PropTypes.func, // used in conditional rendering, no need for default
+  updateContact: PropTypes.func,
 };
 const defaultProps = {
-
+  updateContact: () => null,
 };
 
 class ContactForm extends Component {
-  state = {
-    contactData: this.props.displayedContact,
-    isDirty: false,
-  };
+  constructor(props) {
+    super(props);
+    const { displayedContact } = props;
+
+    this.state = {
+      contactData: displayedContact,
+      isDirty: false,
+    };
+  }
 
   componentDidUpdate(prevProps) {
     const { displayedContact } = this.props;
+
     if (prevProps.displayedContact.id !== displayedContact.id) {
       this.setState({ contactData: displayedContact, isDirty: false });
     }
@@ -29,6 +36,7 @@ class ContactForm extends Component {
 
   handleChange = event => {
     const { value, name } = event.target;
+
     if (name === 'company') {
       const newState = update(this.state, {
         contactData: { company: { name: { $set: value } } },
@@ -46,6 +54,7 @@ class ContactForm extends Component {
   handleSubmit = event => {
     const { updateContact } = this.props;
     const { contactData } = this.state;
+
     event.preventDefault();
     updateContact(contactData);
     return this.setState({ isDirty: false });
@@ -56,16 +65,19 @@ class ContactForm extends Component {
       contactData: { avatar, name, username, email, phone, website, company }, isDirty,
     } = this.state;
     const { onClose } = this.props;
+
     return (
-      <form onSubmit={this.handleSubmit} className={styles.contactForm}>
-        <img src={avatar} alt="avatar" />
+      <form onSubmit={this.handleSubmit} className={styles['contact-form']}>
+        <div className={styles['img-frame']}>
+          <img src={avatar} alt="avatar" />
+        </div>
         <TextField
           onChange={this.handleChange}
           margin="normal"
           value={name}
           label="name"
           name="name"
-          className={styles.formField}
+          className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
@@ -73,7 +85,7 @@ class ContactForm extends Component {
           value={avatar}
           label="avatar"
           name="avatar"
-          className={styles.formField}
+          className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
@@ -81,7 +93,7 @@ class ContactForm extends Component {
           value={username}
           label="username"
           name="username"
-          className={styles.formField}
+          className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
@@ -89,7 +101,7 @@ class ContactForm extends Component {
           value={email}
           label="email"
           name="email"
-          className={styles.formField}
+          className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
@@ -97,7 +109,7 @@ class ContactForm extends Component {
           value={phone}
           label="phone"
           name="phone"
-          className={styles.formField}
+          className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
@@ -105,7 +117,7 @@ class ContactForm extends Component {
           value={website}
           label="website"
           name="website"
-          className={styles.formField}
+          className={styles['form-field']}
         />
         <TextField
           onChange={this.handleChange}
@@ -113,9 +125,9 @@ class ContactForm extends Component {
           value={company.name}
           label="company"
           name="company"
-          className={styles.formField}
+          className={styles['form-field']}
         />
-        <div className={styles.buttonsBin}>
+        <div className={styles['buttons-bin']}>
           <Button type="submit" disabled={!isDirty}>
             { 'Change' }
           </Button>
